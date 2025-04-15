@@ -1,49 +1,48 @@
 import 'dart:io';
 
-
-
+List<String> todos = [];
 
 void clearConsole() {
-  if (Platform.isWindows) {
-    // Windows
-    Process.run('cls', [], runInShell: true).then((result) {
-      print(result.stdout);
-    });
-  } else {
-    // Linux und macOS
-    Process.run('clear', [], runInShell: true).then((result) {
-      print(result.stdout);
-    });
+  for (var i = 0; i < 100; i++) {
+    print('\n');
   }
 }
 
-
-
-void create(){
+void create() {
   print("Create Todos");
+  int langht_todolist = todos.length;
+  langht_todolist += 1;
+  todos[langht_todolist] = stdin.readLineSync().toString();
   return;
 }
 
-void list(){
+void list() {
   print("List Todos");
   return;
 }
 
-void main ()
-{
+void read_todos() {}
+
+void main() {
+  clearConsole();
   print("Hello");
   String? mainInput = stdin.readLineSync();
 
-  switch(mainInput.toString())
-  {
-      case "1":
-        create();
-        break;
-      case "2":
-        list();
-        break;
-      default:
-        print("exit");
-        return;
+  switch (mainInput.toString()) {
+    case "1":
+      clearConsole();
+      create();
+      main();
+      break;
+    case "2":
+      clearConsole();
+      list();
+      main();
+      break;
+    case "3":
+      read_todos();
+    default:
+      print("exit");
+      return;
   }
 }
