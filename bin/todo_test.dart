@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:async';
 
 List<String> todos = [];
 
@@ -27,23 +28,19 @@ void printlist() {
       print(todos[x]);
     }
   }
-  return;
 }
 
 void list() {
   clearConsole();
   print("List Todos");
   printlist();
-  Future.delayed(const Duration(seconds: 30), () {
-    return;
-  });
 }
 
 void read() {}
 
 void save() {}
 
-void main() {
+Future<void> main() async {
   clearConsole();
   print("Hello");
   String? mainInput = stdin.readLineSync();
@@ -57,7 +54,10 @@ void main() {
     case "2":
       clearConsole();
       list();
-      main();
+      //      await Future.delayed(Duration(seconds: 30));
+      Future.delayed(Duration(seconds: 10), () {
+        main();
+      });
       break;
     case "3":
       read();
