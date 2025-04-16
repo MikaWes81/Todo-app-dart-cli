@@ -27,7 +27,7 @@ void printlist() {
       print(todos[x]);
     }
   }
-  Future.delayed(Duration(seconds: 30));
+  return;
 }
 
 void list() {
