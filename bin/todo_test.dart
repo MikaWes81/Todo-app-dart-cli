@@ -10,18 +10,38 @@ void clearConsole() {
 
 void create() {
   print("Create Todos");
-  int langht_todolist = todos.length;
-  langht_todolist += 1;
-  todos[langht_todolist] = stdin.readLineSync().toString();
+  print("Please Enter Your Todo");
+  todos.add(stdin.readLineSync().toString());
   return;
+}
+
+void printlist() {
+  int tl = todos.length; //tl = Length Todolist
+  int todosnum = 0;
+  if (todosnum + 5 > tl) {
+    for (var x = todosnum; x < tl; x++) {
+      print(todos[x]);
+    }
+  } else {
+    for (var x = todosnum; x < todosnum + 5; x++) {
+      print(todos[x]);
+    }
+  }
+  Future.delayed(Duration(seconds: 30));
 }
 
 void list() {
+  clearConsole();
   print("List Todos");
-  return;
+  printlist();
+  Future.delayed(const Duration(seconds: 30), () {
+    return;
+  });
 }
 
-void read_todos() {}
+void read() {}
+
+void save() {}
 
 void main() {
   clearConsole();
@@ -40,7 +60,11 @@ void main() {
       main();
       break;
     case "3":
-      read_todos();
+      read();
+      break;
+    case "4":
+      save();
+      break;
     default:
       print("exit");
       return;
